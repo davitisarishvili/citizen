@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/app.css">
+
+  <title>Hello, world!</title>
+</head>
+<body>
+  <div id="app">
+    <nav class="navbar">
+      <div class="container">
+        <div class="w-100 row">
+          <div class="col">
+            <a class="navbar-brand" href="#"><span>Citi<span class="red">zen</span></a>
+          </div>
+          <div class="col-6">
+            <div class="navbar-search d-inline-flex align-items-center justify-content-between w-100">
+              <input type="text" class="navbar-search-input" placeholder="ძიების ველი...">
+              <div class="navbar-search-filters d-inline-flex">
+                <div class="dropdown mr-2">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="filter-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="assets/img/plus-icon.png" width="11" height="11">
+                    თემა
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="filter-1">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="filter-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="assets/img/plus-icon.png" width="11" height="11">
+                    მდებარეობა
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="filter-2">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="navbar-actions">
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#add-post-modal">
+                <img src="assets/img/plus-icon.png" width="11" height="11">
+                პოსტის დამატება
+              </button>
+
+              <a class="navbar-action-notification ml-2 mr-3" href="#">
+                <span class="navbar-action-badge">3</span>
+                <img src="assets/img/notification-icon.png" width="28" height="28">
+              </a>
+
+              <a class="navbar-action-message" href="#">
+                <span class="navbar-action-badge">3</span>
+                <img src="assets/img/message-icon.png" width="25" height="25">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="main-content">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+
+            <div class="user-profile d-flex justify-content-between align-items-center mb-4">
+              <img src="assets/img/profile-icon.png" width="51" height="51">
+              <a class="user-profile-name" href="#">
+                <p>Dato Kanchashvili</p>
+                <small>პროფილზე გადასვლა</small>
+              </a>
+            </div>
+
+            <div class="main-menu d-flex flex-column">
+
+              <a v-for="item in content" v-on:click="changeContent(item)" class="main-menu-item d-flex align-items-center" v-bind:class="{ active: item.is_active }" href="#">
+                <img :src="'assets/img/' + item.name + '-icon.png'" width="26" height="24">
+                <span>{{ item.title }}</span>
+              </a>
+
+            </div>
+
+          </div>
+          <div class="col-6">
+            <div class="content-filters mb-4">
+              <div class="dropdown d-inline mr-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  წუხილი
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdown-1">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+
+              <div class="dropdown d-inline mr-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  კერძო
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdown-2">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+
+              <div class="dropdown d-inline mr-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  გეოგრაფია
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdown-3">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+
+              <div class="dropdown d-inline">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  ინიციატივა
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdown-4">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+            </div>
+            <div class="content">
+
+
+
+              <div class="content-item" v-bind:class="{ active: active_content == 'home' }">
+                <div class="post mb-4">
+                  <div class="post-header d-flex justify-content-between mb-3">
+                    <div class="post-user d-flex justify-content-between align-items-center">
+                      <img class="mr-3" src="assets/img/profile-icon.png" width="51" height="51">
+                      <a class="user-profile-name" href="#">
+                        <p>Dato Kanchashvili</p>
+                        <small>აქტიური მოქალაქე</small>
+                        <hr>
+                        <p class="location">გლდანი, მესამე მიკრო</p>
+                      </a>
+                    </div>
+                    <div class="post-actions d-flex align-items-center">
+                      <a class="post-actions-item save" href="#">
+                        <img src="assets/img/save-icon.png" width="13" height="17">
+                        Save
+                      </a>
+                      <div class="post-actions-item date-ago">16 min ago</div>
+                      <div class="dropdown post-actions-item">
+                        <div class="post-actions-item-settings" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</div>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-4">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="post-description mb-3">
+                    ახალი გზა, დარეკეს ღრმულია იქნებ შეავსოთო და ასეთი მაგარი რამე შემოგვთავაზეს
+                  </div>
+                  <div class="post-tags mb-4">
+                    <a class="post-tags-item" href="#">#ნეგატივი</a>
+                    <a class="post-tags-item" href="#">#სახელმწიფო</a>
+                    <a class="post-tags-item" href="#">#გზები</a>
+                    <a class="post-tags-item" href="#">#გლდანი</a>
+                  </div>
+
+                  <div class="post-img mb-4">
+                    <img src="assets/img/post-banner.jpg" class="img img-fluid">
+                  </div>
+
+                  <div class="post-buttons d-flex justify-content-between mb-4">
+                    <div class="buttons d-flex align-items-center">
+                      <a class="d-flex align-items-center mr-4" href="#">
+                        <img class="mr-2" src="assets/img/agree-icon.svg" width="25" height="20"> Agree
+                      </a>
+                      <a class="d-flex align-items-center" href="#">
+                        <img class="mr-2" src="assets/img/dont-agree-icon.svg" width="25" height="20"> Don't Agree
+                      </a>
+                    </div>
+                    <div class="share">
+                      <a class="d-flex align-items-center" href="#">
+                        <img class="mr-2" src="assets/img/share-icon.svg" width="25" height="25"> Share
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="post-comments">
+                    <div class="post-comments-item d-flex mb-2">
+                      <div class="post-comments-item-img mr-2">
+                        <img src="assets/img/post-banner.jpg" width="35" height="35">
+                      </div>
+                      <div class="post-comments-item-content">
+                        <h3>Dato Kanchashvili</h3>
+                        <p>ძაან მაგარი რამე გააკეთეს :D მგონი გვეღადავებიან და გონიათ ვერ ვხვდებით</p>
+                      </div>
+                    </div>
+                    <div class="post-comments-item d-flex mb-2">
+                      <div class="post-comments-item-img mr-2">
+                        <img src="assets/img/post-banner.jpg" width="35" height="35">
+                      </div>
+                      <div class="post-comments-item-content">
+                        <h3>Dato Kanchashvili</h3>
+                        <p>ძაან მაგარი რამე გააკეთეს :D მგონი გვეღადავებიან და გონიათ ვერ ვხვდებით</p>
+                      </div>
+                    </div>
+
+                    <a class="see-all" href="#">See all comments (28)</a>
+                  </div>
+                </div>
+
+                <div class="post mb-4">
+                  <div class="post-header d-flex justify-content-between mb-3">
+                    <div class="post-user d-flex justify-content-between align-items-center">
+                      <img class="mr-3" src="assets/img/profile-icon.png" width="51" height="51">
+                      <a class="user-profile-name" href="#">
+                        <p>Dato Kanchashvili</p>
+                        <small>აქტიური მოქალაქე</small>
+                        <hr>
+                        <p class="location">გლდანი, მესამე მიკრო</p>
+                      </a>
+                    </div>
+                    <div class="post-actions d-flex align-items-center">
+                      <a class="post-actions-item save" href="#">
+                        <img src="assets/img/save-icon.png" width="13" height="17">
+                        Save
+                      </a>
+                      <div class="post-actions-item date-ago">16 min ago</div>
+                      <div class="dropdown post-actions-item">
+                        <div class="post-actions-item-settings" id="dropdown-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">...</div>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-4">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="post-description mb-3">
+                    ახალი გზა, დარეკეს ღრმულია იქნებ შეავსოთო და ასეთი მაგარი რამე შემოგვთავაზეს
+                  </div>
+                  <div class="post-tags mb-4">
+                    <a class="post-tags-item" href="#">#ნეგატივი</a>
+                    <a class="post-tags-item" href="#">#სახელმწიფო</a>
+                    <a class="post-tags-item" href="#">#გზები</a>
+                    <a class="post-tags-item" href="#">#გლდანი</a>
+                  </div>
+
+                  <div class="post-img mb-4">
+                    <img src="assets/img/post-banner.jpg" class="img img-fluid">
+                  </div>
+
+                  <div class="post-buttons d-flex justify-content-between mb-4">
+                    <div class="buttons d-flex align-items-center">
+                      <a class="d-flex align-items-center mr-4" href="#">
+                        <img class="mr-2" src="assets/img/agree-icon.svg" width="25" height="20"> Agree
+                      </a>
+                      <a class="d-flex align-items-center" href="#">
+                        <img class="mr-2" src="assets/img/dont-agree-icon.svg" width="25" height="20"> Don't Agree
+                      </a>
+                    </div>
+                    <div class="share">
+                      <a class="d-flex align-items-center" href="#">
+                        <img class="mr-2" src="assets/img/share-icon.svg" width="25" height="25"> Share
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="post-comments">
+                    <div class="post-comments-item d-flex mb-2">
+                      <div class="post-comments-item-img mr-2">
+                        <img src="assets/img/post-banner.jpg" width="35" height="35">
+                      </div>
+                      <div class="post-comments-item-content">
+                        <h3>Dato Kanchashvili</h3>
+                        <p>ძაან მაგარი რამე გააკეთეს :D მგონი გვეღადავებიან და გონიათ ვერ ვხვდებით</p>
+                      </div>
+                    </div>
+                    <div class="post-comments-item d-flex mb-2">
+                      <div class="post-comments-item-img mr-2">
+                        <img src="assets/img/post-banner.jpg" width="35" height="35">
+                      </div>
+                      <div class="post-comments-item-content">
+                        <h3>Dato Kanchashvili</h3>
+                        <p>ძაან მაგარი რამე გააკეთეს :D მგონი გვეღადავებიან და გონიათ ვერ ვხვდებით</p>
+                      </div>
+                    </div>
+
+                    <a class="see-all" href="#">See all comments (28)</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-item" v-bind:class="{ active: active_content == 'top-topics' }">
+                <div class="topic mb-4">
+                  <div class="topic-header d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="topic-title">ინფრასტრუქტურა</h2>
+                    <div class="topic-count">ინიციატივა: 200</div>
+                  </div>
+                  <div class="topic-content">
+                    <div class="topic-image mb-3">
+                      <a href="#">
+                        <img src="assets/img/post-banner.jpg" class="img img-fluid">
+                      </a>
+                    </div>
+                    <div class="topic-feeback-count mb-3">
+                      სულ გამოხმაურება 50k.
+                    </div>
+                    <div class="topic-feeback-list">
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="topic-feeback-list-item mb-3">
+                            წუხილი სახელმწ. 1000
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="topic-feeback-list-item mb-3">
+                            წუხილი კერძო. 1253
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="topic-feeback-list-item mb-3">
+                            პოზიტივი სახელმწ. 1253
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="topic-feeback-list-item mb-3">
+                            პოზიტივი კერძო. 57821
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="topic mb-4">
+                  <div class="topic-header d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="topic-title">ინფრასტრუქტურა</h2>
+                    <div class="topic-count">ინიციატივა: 200</div>
+                  </div>
+                  <div class="topic-content">
+                    <div class="topic-image mb-3">
+                      <a href="#">
+                        <img src="assets/img/post-banner.jpg" class="img img-fluid">
+                      </a>
+                    </div>
+                    <div class="topic-feeback-count mb-3">
+                      სულ გამოხმაურება 50k.
+                    </div>
+                    <div class="topic-feeback-list">
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="topic-feeback-list-item mb-3">
+                            წუხილი სახელმწ. 1000
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="topic-feeback-list-item mb-3">
+                            წუხილი კერძო. 1253
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="topic-feeback-list-item mb-3">
+                            პოზიტივი სახელმწ. 1253
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="topic-feeback-list-item mb-3">
+                            პოზიტივი კერძო. 57821
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="topic mb-4">
+                  <div class="topic-header d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="topic-title">ინფრასტრუქტურა</h2>
+                    <div class="topic-count">ინიციატივა: 200</div>
+                  </div>
+                  <div class="topic-content">
+                    <div class="topic-image mb-3">
+                      <a href="#">
+                        <img src="assets/img/post-banner.jpg" class="img img-fluid">
+                      </a>
+                    </div>
+                    <div class="topic-feeback-count mb-3">
+                      სულ გამოხმაურება 50k.
+                    </div>
+                    <div class="topic-feeback-list">
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="topic-feeback-list-item mb-3">
+                            წუხილი სახელმწ. 1000
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="topic-feeback-list-item mb-3">
+                            წუხილი კერძო. 1253
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="topic-feeback-list-item mb-3">
+                            პოზიტივი სახელმწ. 1253
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="topic-feeback-list-item mb-3">
+                            პოზიტივი კერძო. 57821
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+
+            <div class="top-posts mb-4">
+              <h2 class="mb-4">ტოპ თემები</h2>
+              <div class="top-posts-list">
+                <a class="top-posts-list-item" href="#">
+                  <p>პარლამენტთან მიმდინარე აქცია</p>
+                  <span>
+                    <img src="assets/img/views-icon.png" width="17" height="12">
+                    21,536
+                  </span>
+                </a>
+                <a class="top-posts-list-item" href="#">
+                  <p>10 წლის წინანდელი საქმე გაიხსნა</p>
+                  <span>
+                    <img src="assets/img/views-icon.png" width="17" height="12">
+                    21,536
+                  </span>
+                </a>
+                <a class="top-posts-list-item" href="#">
+                  <p>რატომ, რისთვის იბრძვის ნოდარ მელაძე</p>
+                  <span>
+                    <img src="assets/img/views-icon.png" width="17" height="12">
+                    21,536
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <div class="posts">
+              <div class="posts-list">
+                <div class="posts-list-item mb-4">
+                  <div class="posts-list-item-title">
+                    ლაივ ჩართვა - Black Sea Arena დან, გახსნის ცერემონია
+                  </div>
+                  <div class="posts-list-item-img">
+                    <img src="assets/img/banner.png" class="img img-fluid">
+                  </div>
+                </div>
+                <div class="posts-list-item mb-4">
+                  <div class="posts-list-item-title">
+                    ლაივ ჩართვა - Black Sea Arena დან, გახსნის ცერემონია
+                  </div>
+                  <div class="posts-list-item-img">
+                    <img src="assets/img/banner.png" class="img img-fluid">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modals Section -->
+    <div class="modal fade" id="add-post-modal" tabindex="-1" aria-labelledby="add-post-modal-title" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          Loading...
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
